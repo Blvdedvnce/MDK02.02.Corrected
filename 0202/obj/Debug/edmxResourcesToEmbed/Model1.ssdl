@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище MDK0202Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Материал$">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="255" />
+    <Property Name="Тип_Материала" Type="int" />
+  </EntityType>
+  <EntityType Name="Партнеры$">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Тип_партнера" Type="int" />
+    <Property Name="Наименование_партнера" Type="nvarchar" MaxLength="255" />
+    <Property Name="Директор" Type="nvarchar" MaxLength="255" />
+    <Property Name="Электронная_почта_партнера" Type="nvarchar" MaxLength="255" />
+    <Property Name="Телефон_партнера" Type="nvarchar" MaxLength="13" />
+    <Property Name="Юридический_адрес_партнера" Type="nvarchar" MaxLength="255" />
+    <Property Name="ИНН" Type="nvarchar" MaxLength="12" />
+    <Property Name="Рейтинг" Type="float" />
+  </EntityType>
+  <EntityType Name="ПродуктыПартнера$">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="КодПродукции" Type="int" />
+    <Property Name="КодПартнера" Type="int" />
+    <Property Name="Количество_продукции" Type="int" />
+  </EntityType>
+  <EntityType Name="Продукция$">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Тип_продукции" Type="int" />
+    <Property Name="Наименование_продукции" Type="nvarchar" MaxLength="255" />
+    <Property Name="Артикул" Type="nvarchar" MaxLength="20" />
+    <Property Name="Минимальная_стоимость_для_партнера" Type="float" />
+  </EntityType>
+  <EntityType Name="СоставПродукции$">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="КодПродукции" Type="int" />
+    <Property Name="КодМатериала" Type="int" />
+  </EntityType>
+  <EntityType Name="Тип_Материала$">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Тип_материала" Type="nvarchar" MaxLength="50" />
+    <Property Name="Процент_брака_материала" Type="float" />
+  </EntityType>
+  <EntityType Name="ТипПартнера$">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="55" />
+  </EntityType>
+  <EntityType Name="ТипПродукции$">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Тип_продукции" Type="nvarchar" MaxLength="255" />
+    <Property Name="Коэффициент_типа_продукции" Type="float" />
+  </EntityType>
+  <Association Name="FK_Материал$_Тип_Материала$">
+    <End Role="Тип_Материала$" Type="Self.Тип_Материала$" Multiplicity="0..1" />
+    <End Role="Материал$" Type="Self.Материал$" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Тип_Материала$">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Материал$">
+        <PropertyRef Name="Тип_Материала" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ПродуктыПартнера$_Партнеры$">
+    <End Role="Партнеры$" Type="Self.Партнеры$" Multiplicity="0..1" />
+    <End Role="ПродуктыПартнера$" Type="Self.ПродуктыПартнера$" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Партнеры$">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="ПродуктыПартнера$">
+        <PropertyRef Name="КодПартнера" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ПродуктыПартнера$_Продукция$">
+    <End Role="Продукция$" Type="Self.Продукция$" Multiplicity="0..1" />
+    <End Role="ПродуктыПартнера$" Type="Self.ПродуктыПартнера$" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Продукция$">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="ПродуктыПартнера$">
+        <PropertyRef Name="КодПродукции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Продукция$_ТипПродукции$">
+    <End Role="ТипПродукции$" Type="Self.ТипПродукции$" Multiplicity="0..1" />
+    <End Role="Продукция$" Type="Self.Продукция$" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ТипПродукции$">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Продукция$">
+        <PropertyRef Name="Тип_продукции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_СоставПродукции$_Материал$">
+    <End Role="Материал$" Type="Self.Материал$" Multiplicity="0..1" />
+    <End Role="СоставПродукции$" Type="Self.СоставПродукции$" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Материал$">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="СоставПродукции$">
+        <PropertyRef Name="КодМатериала" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_СоставПродукции$_Продукция$">
+    <End Role="Продукция$" Type="Self.Продукция$" Multiplicity="0..1" />
+    <End Role="СоставПродукции$" Type="Self.СоставПродукции$" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Продукция$">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="СоставПродукции$">
+        <PropertyRef Name="КодПродукции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище MDK0202ModelContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Материал$" EntityType="Self.Материал$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Партнеры$" EntityType="Self.Партнеры$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ПродуктыПартнера$" EntityType="Self.ПродуктыПартнера$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Продукция$" EntityType="Self.Продукция$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="СоставПродукции$" EntityType="Self.СоставПродукции$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Тип_Материала$" EntityType="Self.Тип_Материала$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ТипПартнера$" EntityType="Self.ТипПартнера$" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ТипПродукции$" EntityType="Self.ТипПродукции$" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Материал$_Тип_Материала$" Association="Self.FK_Материал$_Тип_Материала$">
+      <End Role="Тип_Материала$" EntitySet="Тип_Материала$" />
+      <End Role="Материал$" EntitySet="Материал$" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ПродуктыПартнера$_Партнеры$" Association="Self.FK_ПродуктыПартнера$_Партнеры$">
+      <End Role="Партнеры$" EntitySet="Партнеры$" />
+      <End Role="ПродуктыПартнера$" EntitySet="ПродуктыПартнера$" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ПродуктыПартнера$_Продукция$" Association="Self.FK_ПродуктыПартнера$_Продукция$">
+      <End Role="Продукция$" EntitySet="Продукция$" />
+      <End Role="ПродуктыПартнера$" EntitySet="ПродуктыПартнера$" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Продукция$_ТипПродукции$" Association="Self.FK_Продукция$_ТипПродукции$">
+      <End Role="ТипПродукции$" EntitySet="ТипПродукции$" />
+      <End Role="Продукция$" EntitySet="Продукция$" />
+    </AssociationSet>
+    <AssociationSet Name="FK_СоставПродукции$_Материал$" Association="Self.FK_СоставПродукции$_Материал$">
+      <End Role="Материал$" EntitySet="Материал$" />
+      <End Role="СоставПродукции$" EntitySet="СоставПродукции$" />
+    </AssociationSet>
+    <AssociationSet Name="FK_СоставПродукции$_Продукция$" Association="Self.FK_СоставПродукции$_Продукция$">
+      <End Role="Продукция$" EntitySet="Продукция$" />
+      <End Role="СоставПродукции$" EntitySet="СоставПродукции$" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

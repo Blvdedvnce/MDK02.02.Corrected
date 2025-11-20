@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MDK0202ModelContainer" CdmEntityContainer="MDK0202Entities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MDK0202Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Материал_">
+      <EntityTypeMapping TypeName="MDK0202Model.Материал_">
+        <MappingFragment StoreEntitySet="Материал$">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Тип_Материала" ColumnName="Тип_Материала" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Партнеры_">
+      <EntityTypeMapping TypeName="MDK0202Model.Партнеры_">
+        <MappingFragment StoreEntitySet="Партнеры$">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Тип_партнера" ColumnName="Тип_партнера" />
+          <ScalarProperty Name="Наименование_партнера" ColumnName="Наименование_партнера" />
+          <ScalarProperty Name="Директор" ColumnName="Директор" />
+          <ScalarProperty Name="Электронная_почта_партнера" ColumnName="Электронная_почта_партнера" />
+          <ScalarProperty Name="Телефон_партнера" ColumnName="Телефон_партнера" />
+          <ScalarProperty Name="Юридический_адрес_партнера" ColumnName="Юридический_адрес_партнера" />
+          <ScalarProperty Name="ИНН" ColumnName="ИНН" />
+          <ScalarProperty Name="Рейтинг" ColumnName="Рейтинг" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ПродуктыПартнера_">
+      <EntityTypeMapping TypeName="MDK0202Model.ПродуктыПартнера_">
+        <MappingFragment StoreEntitySet="ПродуктыПартнера$">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="КодПродукции" ColumnName="КодПродукции" />
+          <ScalarProperty Name="КодПартнера" ColumnName="КодПартнера" />
+          <ScalarProperty Name="Количество_продукции" ColumnName="Количество_продукции" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Продукция_">
+      <EntityTypeMapping TypeName="MDK0202Model.Продукция_">
+        <MappingFragment StoreEntitySet="Продукция$">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Тип_продукции" ColumnName="Тип_продукции" />
+          <ScalarProperty Name="Наименование_продукции" ColumnName="Наименование_продукции" />
+          <ScalarProperty Name="Артикул" ColumnName="Артикул" />
+          <ScalarProperty Name="Минимальная_стоимость_для_партнера" ColumnName="Минимальная_стоимость_для_партнера" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="СоставПродукции_">
+      <EntityTypeMapping TypeName="MDK0202Model.СоставПродукции_">
+        <MappingFragment StoreEntitySet="СоставПродукции$">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="КодПродукции" ColumnName="КодПродукции" />
+          <ScalarProperty Name="КодМатериала" ColumnName="КодМатериала" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Тип_Материала_">
+      <EntityTypeMapping TypeName="MDK0202Model.Тип_Материала_">
+        <MappingFragment StoreEntitySet="Тип_Материала$">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Тип_материала" ColumnName="Тип_материала" />
+          <ScalarProperty Name="Процент_брака_материала" ColumnName="Процент_брака_материала" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ТипПартнера_">
+      <EntityTypeMapping TypeName="MDK0202Model.ТипПартнера_">
+        <MappingFragment StoreEntitySet="ТипПартнера$">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ТипПродукции_">
+      <EntityTypeMapping TypeName="MDK0202Model.ТипПродукции_">
+        <MappingFragment StoreEntitySet="ТипПродукции$">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Тип_продукции" ColumnName="Тип_продукции" />
+          <ScalarProperty Name="Коэффициент_типа_продукции" ColumnName="Коэффициент_типа_продукции" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

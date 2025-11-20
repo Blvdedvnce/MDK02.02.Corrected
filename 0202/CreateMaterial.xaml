@@ -1,0 +1,30 @@
+﻿<Window x:Class="_0202.CreateMaterial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_0202"
+        mc:Ignorable="d"
+        Title="Создание материала" Height="450" Width="800" Icon="/Новые технологии.ico"
+        FontFamily="Bahnschrift Light SemiCondensed" Background="#FFFFFF">
+
+    <Grid>
+        <Label Content="Расчёт необходимого материала" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Foreground="#0C4882"/>
+        <Label Content="Тип продукции:" HorizontalAlignment="Left" Margin="82,60,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#0C4882"/>
+        <ComboBox x:Name="TypeProduct" HorizontalAlignment="Left" Margin="82,92,0,0" VerticalAlignment="Top" Width="237" FontSize="16" Background="#BBDCFA"/>
+        <Label Content="Тип материала:" HorizontalAlignment="Left" Margin="400,60,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#0C4882"/>
+        <ComboBox x:Name="TypeMaterial" HorizontalAlignment="Left" Margin="400,92,0,0" VerticalAlignment="Top" Width="221" FontSize="16" Background="#BBDCFA"/>
+        <Label Content="Требуемое кол-во продукции:" HorizontalAlignment="Left" Margin="82,125,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#0C4882"/>
+        <TextBox x:Name="RequiredCount" HorizontalAlignment="Left" Margin="82,152,0,0" VerticalAlignment="Top" Width="166" FontSize="18" Background="#BBDCFA"/>
+        <Label Content="На складе продукции:" HorizontalAlignment="Left" Margin="529,191,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#0C4882"/>
+        <TextBox x:Name="InStock" HorizontalAlignment="Left" Margin="529,227,0,0" VerticalAlignment="Top" Width="166" FontSize="18" Background="#BBDCFA"/>
+        <Label Content="Параметр 1:" HorizontalAlignment="Left" Margin="510,125,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#0C4882"/>
+        <TextBox x:Name="Param1" HorizontalAlignment="Left" Margin="510,152,0,0" VerticalAlignment="Top" Width="166" FontSize="18" Background="#BBDCFA"/>
+        <Label Content="Параметр 2:" HorizontalAlignment="Left" Margin="82,200,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#0C4882"/>
+        <TextBox x:Name="Param2" HorizontalAlignment="Left" Margin="82,227,0,0" VerticalAlignment="Top" Width="166" FontSize="18" Background="#BBDCFA"/>
+        <Button Content="Рассчитать" Background="#0C4882" Foreground="#FFFFFF" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="339,217,0,0" VerticalAlignment="Top" Height="44" Width="126" Click="Calc_Click"/>
+        <Label x:Name="Result" Content="Количество материала: " HorizontalAlignment="Left" Margin="289,286,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#0C4882"/>
+        <Button Content="Назад" Background="#0C4882" Foreground="#FFFFFF" FontSize="16" HorizontalAlignment="Left" Margin="56,350,0,0" VerticalAlignment="Top" Height="36" Width="120" Click="Back_Click"/>
+        <Image Margin="698,10,10,351" Source="/Новые технологии.png" Stretch="Fill"/>
+    </Grid>
+</Window>
